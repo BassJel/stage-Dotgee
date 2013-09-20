@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'slim-rails'
+gem 'sass-rails'
+gem "twitter-bootstrap-rails"
+gem 'bootstrap-kaminari-views'
+
+gem 'haml'
+gem 'haml2slim'
+gem 'hpricot'

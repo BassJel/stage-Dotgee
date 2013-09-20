@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Redmine: Derniers projets</title>
+  <link rel="self" href="http://localhost:3000/projects.atom"/>
+  <link rel="alternate" href="http://localhost:3000/projects"/>
+  <id>http://localhost:3000/</id>
+  <updated>2013-07-01T08:00:54Z</updated>
+  <author>
+    <name>Redmine</name>
+  </author>
+  <generator uri="http://www.redmine.org/">
+Redmine  </generator>
+  <entry>
+    <title>Test4 - Projet: Test4</title>
+    <link rel="alternate" href="http://localhost:3000/projects/test4"/>
+    <id>http://localhost:3000/projects/test4</id>
+    <updated>2013-07-01T08:00:54Z</updated>
+    <content type="html">
+    </content>
+  </entry>
+  <entry>
+    <title>Test3 - Projet: Test3</title>
+    <link rel="alternate" href="http://localhost:3000/projects/test3"/>
+    <id>http://localhost:3000/projects/test3</id>
+    <updated>2013-07-01T08:00:17Z</updated>
+    <content type="html">
+    </content>
+  </entry>
+  <entry>
+    <title>Test2 - Projet: Test2</title>
+    <link rel="alternate" href="http://localhost:3000/projects/test2"/>
+    <id>http://localhost:3000/projects/test2</id>
+    <updated>2013-07-01T07:59:54Z</updated>
+    <content type="html">
+    </content>
+  </entry>
+  <entry>
+    <title>Test1  - Projet: Test1 </title>
+    <link rel="alternate" href="http://localhost:3000/projects/test1"/>
+    <id>http://localhost:3000/projects/test1</id>
+    <updated>2013-07-01T07:59:43Z</updated>
+    <content type="html">
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,4 @@
+# English strings go here for Rails i18n
+en:
+ permission_view_pops: View Pops
+ permission_vote_pops: Vote Pops

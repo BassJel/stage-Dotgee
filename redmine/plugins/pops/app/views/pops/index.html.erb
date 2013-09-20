@@ -1,0 +1,9 @@
+<h2>Interview</h2>
+
+<% @pops.each do |pop| %>
+  <p>
+  <%= pop.question %>?
+  <%= link_to 'Yes', { :action => 'vote', :id => pop[:id], :answer => 'yes' }, :method => :post %> (<%= pop.yes %>) / 
+  <%= link_to 'No', { :action => 'vote', :id => pop[:id], :answer => 'no' }, :method => :post %> (<%= pop.no %>) /
+  </p>
+<% end %>

@@ -1,0 +1,34 @@
+<%= "#{issue.tracker.name} ##{issue.id}: #{issue.subject}" %>
+<%= issue_url %>
+
+* <%=l(:field_author)%>: <%= issue.author %>
+* <%=l(:field_status)%>: <%= issue.status %>
+* <%=l(:field_priority)%>: <%= issue.priority %>
+<% if issue.assigned_to %>
+* <%=l(:field_assigned_to)%>: <%= issue.assigned_to %>
+<% end %>
+<% if issue.fixed_version %>
+* <%=l(:field_category)%>: <%= issue.category %>
+<% end %>
+<% if issue.fixed_version %>
+* <%=l(:field_fixed_version)%>: <%= issue.fixed_version %>
+<% end %>
+<% if issue.due_date %>
+* <%=l(:field_due_date)%>: <%= issue.due_date %>
+<% end %>
+* <%=l(:field_start_date)%>: <%= issue.start_date %>
+<% if issue.estimated_hours %>
+* <%=l(:field_estimated_hours)%>: <%= issue.estimated_hours%>
+<% end %>
+* <%=l(:field_done_ratio)%>: <%=h issue.done_ratio %>
+<% issue.custom_field_values.each do |c| %>* <%= c.custom_field.name %>: <%= show_value(c) %>
+<% end -%>
+----------------------------------------
+<%= issue.description %>
+
+<% if issue.attachments.any? -%>
+---<%= l(:label_attachment_plural).ljust(37, '-') %>
+<% issue.attachments.each do |attachment| -%>
+<%= attachment.filename %> (<%= number_to_human_size(attachment.filesize) %>)
+<% end -%>
+<% end -%>

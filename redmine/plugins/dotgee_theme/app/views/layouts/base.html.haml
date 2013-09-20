@@ -1,0 +1,69 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %title= h html_title
+    %meta{:content => Redmine::Info.app_name, :name => "description"}/
+    %meta{:content => "issue,bug,tracker", :name => "keywords"}/
+    = csrf_meta_tag
+    = favicon
+    = stylesheet_link_tag 'bootstrap', plugin: 'dotgee_theme' 
+    = stylesheet_link_tag 'jquery/jquery-ui-1.9.2', 'application', :media => 'all'
+    = stylesheet_link_tag 'entypo', plugin: 'dotgee_theme'  
+    = stylesheet_link_tag 'rtl', :media => 'all' if l(:direction) == 'rtl'
+    // custom style
+    %style(type="text/css")
+      :sass
+        body
+          padding-top: 60px
+          padding-bottom: 40px
+    // end custom style
+    = javascript_heads
+    = heads_for_theme
+    = call_hook :view_layouts_base_html_head
+    / page specific tags
+    = yield :header_tags
+  %body
+    #wrap
+      %header.navbar.navbar-inverse.navbar-fluid-top
+        %nav.navbar-inner
+          .container-fluid
+            %ul
+              %a.brand{:href => "/"}
+                %img{:alt => "dotgee", :height => "45", :src => "/images/logo-dotgee.png"}/
+            #menu
+              = render_menu :top_menu if User.current.logged? || !Setting.login_required?
+              = render_menu :account_menu 
+            #quick-search
+              %form{"accept-charset" => "UTF-8", :action => "/search", :method => "get"}
+                %div{:style => "margin:0;padding:0;display:inline"}
+                  %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+                %label{:for => "q"}
+                  %a{:accesskey => "4", :href => "/search"}
+                %input#q.small{:accesskey => "f", :name => "q", :size => "20", :type => "text", :placeholder => "Rechercher..."}/
+             
+      #wrapper2
+        = yield :top_menu
+        #wrapper3
+          .container-fluid
+            #main{:class => sidebar_content? ? '' : 'nosidebar'}
+              .row-fluid
+                / = yield :top_menu
+                #sidebar{ class: sidebar_content? ? 'span3' : '' }
+                  = yield :sidebar
+                  = view_layouts_base_sidebar_hook_response
+                #content{ class: sidebar_content? ? 'span8' : '' }  
+                  = render_flash_messages
+                  = yield
+                  = call_hook :view_layouts_base_content
+                  %div{:style => "clear:both;"}
+          #ajax-indicator{:style => "display:none;"}
+            %span= l(:label_loading)
+          #ajax-modal{:style => "display:none;"}
+
+      %footer
+        .foot-fixed-bottom
+          .container
+            .bgl
+              .bgr.muted.credit
+            Powered by Redmine &copy; 2006-2013 Jean-Philippe Lang
